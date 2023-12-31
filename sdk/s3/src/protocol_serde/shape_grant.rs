@@ -18,39 +18,3 @@ pub fn ser_grant(
     scope.finish();
     Ok(())
 }
-
-#[allow(clippy::needless_question_mark)]
-pub fn de_grant(decoder: &mut ::aws_smithy_xml::decode::ScopedDecoder) -> Result<crate::types::Grant, ::aws_smithy_xml::decode::XmlDecodeError> {
-    #[allow(unused_mut)]
-    let mut builder = crate::types::Grant::builder();
-    while let Some(mut tag) = decoder.next_tag() {
-        match tag.start_el() {
-            s if s.matches("Grantee") /* Grantee com.amazonaws.s3#Grant$Grantee */ =>  {
-                let var_3 =
-                    Some(
-                        crate::protocol_serde::shape_grantee::de_grantee(&mut tag)
-                        ?
-                    )
-                ;
-                builder = builder.set_grantee(var_3);
-            }
-            ,
-            s if s.matches("Permission") /* Permission com.amazonaws.s3#Grant$Permission */ =>  {
-                let var_4 =
-                    Some(
-                        Result::<crate::types::Permission, ::aws_smithy_xml::decode::XmlDecodeError>::Ok(
-                            crate::types::Permission::from(
-                                ::aws_smithy_xml::decode::try_data(&mut tag)?.as_ref()
-                            )
-                        )
-                        ?
-                    )
-                ;
-                builder = builder.set_permission(var_4);
-            }
-            ,
-            _ => {}
-        }
-    }
-    Ok(builder.build())
-}

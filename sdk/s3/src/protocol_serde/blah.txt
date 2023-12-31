@@ -1,0 +1,55 @@
+warning: virtual workspace defaulting to `resolver = "1"` despite one or more workspace members being on edition 2021 which implies `resolver = "2"`
+note: to keep the current resolver, specify `workspace.resolver = "1"` in the workspace root's manifest
+note: to use the edition 2021 resolver, specify `workspace.resolver = "2"` in the workspace root's manifest
+note: for more details see https://doc.rust-lang.org/cargo/reference/resolver.html#resolver-versions
+   Compiling aws-sdk-s3 v1.11.0 (/home/yotam/aws-sdk-rust/sdk/s3)
+error[E0433]: failed to resolve: could not find `shape_grant` in `protocol_serde`
+  --> sdk/s3/src/protocol_serde/shape_access_control_policy.rs:13:40
+   |
+13 |                 crate::protocol_serde::shape_grant::ser_grant(list_item_2, inner_writer)?
+   |                                        ^^^^^^^^^^^ could not find `shape_grant` in `protocol_serde`
+
+error[E0433]: failed to resolve: could not find `shape_owner` in `protocol_serde`
+  --> sdk/s3/src/protocol_serde/shape_access_control_policy.rs:19:32
+   |
+19 |         crate::protocol_serde::shape_owner::ser_owner(var_3, inner_writer)?
+   |                                ^^^^^^^^^^^ could not find `shape_owner` in `protocol_serde`
+
+error[E0433]: failed to resolve: could not find `shape_completed_part` in `protocol_serde`
+  --> sdk/s3/src/protocol_serde/shape_completed_multipart_upload.rs:12:40
+   |
+12 |                 crate::protocol_serde::shape_completed_part::ser_completed_part(list_item_2, inner_writer)?
+   |                                        ^^^^^^^^^^^^^^^^^^^^ could not find `shape_completed_part` in `protocol_serde`
+
+error[E0433]: failed to resolve: could not find `shape_location_info` in `protocol_serde`
+  --> sdk/s3/src/protocol_serde/shape_create_bucket_configuration.rs:14:32
+   |
+14 |         crate::protocol_serde::shape_location_info::ser_location_info(var_2, inner_writer)?
+   |                                ^^^^^^^^^^^^^^^^^^^ could not find `shape_location_info` in `protocol_serde`
+
+error[E0433]: failed to resolve: could not find `shape_bucket_info` in `protocol_serde`
+  --> sdk/s3/src/protocol_serde/shape_create_bucket_configuration.rs:18:32
+   |
+18 |         crate::protocol_serde::shape_bucket_info::ser_bucket_info(var_3, inner_writer)?
+   |                                ^^^^^^^^^^^^^^^^^ could not find `shape_bucket_info` in `protocol_serde`
+
+error[E0433]: failed to resolve: could not find `shape_object_identifier` in `protocol_serde`
+  --> sdk/s3/src/protocol_serde/shape_delete.rs:12:40
+   |
+12 |                 crate::protocol_serde::shape_object_identifier::ser_object_identifier(list_item_1, inner_writer)?
+   |                                        ^^^^^^^^^^^^^^^^^^^^^^^ could not find `shape_object_identifier` in `protocol_serde`
+
+error[E0433]: failed to resolve: could not find `shape_owner` in `protocol_serde`
+   --> sdk/s3/src/protocol_serde/shape_object.rs:101:48
+    |
+101 |                         crate::protocol_serde::shape_owner::de_owner(&mut tag)
+    |                                                ^^^^^^^^^^^ could not find `shape_owner` in `protocol_serde`
+
+error[E0433]: failed to resolve: could not find `shape_restore_status` in `protocol_serde`
+   --> sdk/s3/src/protocol_serde/shape_object.rs:111:48
+    |
+111 |                         crate::protocol_serde::shape_restore_status::de_restore_status(&mut tag)
+    |                                                ^^^^^^^^^^^^^^^^^^^^ could not find `shape_restore_status` in `protocol_serde`
+
+For more information about this error, try `rustc --explain E0433`.
+error: could not compile `aws-sdk-s3` (lib) due to 8 previous errors
