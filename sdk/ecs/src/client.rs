@@ -110,7 +110,9 @@ impl Client {
         &self.handle.conf
     }
 
-    fn validate_config(handle: &Handle) -> Result<(), ::aws_smithy_runtime_api::box_error::BoxError> {
+    fn validate_config(
+        handle: &Handle,
+    ) -> Result<(), ::aws_smithy_runtime_api::box_error::BoxError> {
         let mut cfg = ::aws_smithy_types::config_bag::ConfigBag::base();
         handle
             .runtime_plugins
@@ -135,14 +137,6 @@ impl Client {
         Self::from_conf(sdk_config.into())
     }
 }
-
-mod create_capacity_provider;
-
-mod create_cluster;
-
-mod create_service;
-
-mod create_task_set;
 
 /// Operation customization and supporting types.
 ///
@@ -171,106 +165,10 @@ mod create_task_set;
 /// ```
 pub mod customize;
 
-mod delete_account_setting;
-
-mod delete_attributes;
-
-mod delete_capacity_provider;
-
-mod delete_cluster;
-
-mod delete_service;
-
-mod delete_task_definitions;
-
-mod delete_task_set;
-
-mod deregister_container_instance;
-
-mod deregister_task_definition;
-
-mod describe_capacity_providers;
-
-mod describe_clusters;
-
-mod describe_container_instances;
-
-mod describe_services;
-
 mod describe_task_definition;
-
-mod describe_task_sets;
-
-mod describe_tasks;
-
-mod discover_poll_endpoint;
-
-mod execute_command;
-
-mod get_task_protection;
-
-mod list_account_settings;
-
-mod list_attributes;
-
-mod list_clusters;
-
-mod list_container_instances;
-
-mod list_services;
-
-mod list_services_by_namespace;
-
-mod list_tags_for_resource;
-
-mod list_task_definition_families;
-
-mod list_task_definitions;
-
-mod list_tasks;
-
-mod put_account_setting;
-
-mod put_account_setting_default;
-
-mod put_attributes;
-
-mod put_cluster_capacity_providers;
-
-mod register_container_instance;
-
-mod register_task_definition;
-
-mod run_task;
-
-mod start_task;
-
-mod stop_task;
-
-mod submit_attachment_state_changes;
-
-mod submit_container_state_change;
-
-mod submit_task_state_change;
-
-mod tag_resource;
-
-mod untag_resource;
-
-mod update_capacity_provider;
-
-mod update_cluster;
-
-mod update_cluster_settings;
-
-mod update_container_agent;
-
-mod update_container_instances_state;
 
 mod update_service;
 
-mod update_service_primary_task_set;
+mod describe_container_instances;
 
-mod update_task_protection;
-
-mod update_task_set;
+mod describe_tasks;

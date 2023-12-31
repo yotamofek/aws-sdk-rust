@@ -3,15 +3,21 @@ pub(crate) fn type_erase_result<O, E>(
     result: ::std::result::Result<O, E>,
 ) -> ::std::result::Result<
     ::aws_smithy_runtime_api::client::interceptors::context::Output,
-    ::aws_smithy_runtime_api::client::orchestrator::OrchestratorError<::aws_smithy_runtime_api::client::interceptors::context::Error>,
+    ::aws_smithy_runtime_api::client::orchestrator::OrchestratorError<
+        ::aws_smithy_runtime_api::client::interceptors::context::Error,
+    >,
 >
 where
     O: ::std::fmt::Debug + ::std::marker::Send + ::std::marker::Sync + 'static,
     E: ::std::error::Error + std::fmt::Debug + ::std::marker::Send + ::std::marker::Sync + 'static,
 {
     result
-        .map(|output| ::aws_smithy_runtime_api::client::interceptors::context::Output::erase(output))
-        .map_err(|error| ::aws_smithy_runtime_api::client::interceptors::context::Error::erase(error))
+        .map(|output| {
+            ::aws_smithy_runtime_api::client::interceptors::context::Output::erase(output)
+        })
+        .map_err(|error| {
+            ::aws_smithy_runtime_api::client::interceptors::context::Error::erase(error)
+        })
         .map_err(::std::convert::Into::into)
 }
 
@@ -19,121 +25,14 @@ pub fn parse_http_error_metadata(
     _response_status: u16,
     response_headers: &::aws_smithy_runtime_api::http::Headers,
     response_body: &[u8],
-) -> Result<::aws_smithy_types::error::metadata::Builder, ::aws_smithy_json::deserialize::error::DeserializeError> {
+) -> Result<
+    ::aws_smithy_types::error::metadata::Builder,
+    ::aws_smithy_json::deserialize::error::DeserializeError,
+> {
     crate::json_errors::parse_error_metadata(response_body, response_headers)
 }
 
-pub(crate) mod shape_create_capacity_provider;
-
-pub(crate) mod shape_create_cluster;
-
-pub(crate) mod shape_create_service;
-
-pub(crate) mod shape_create_task_set;
-
-pub(crate) mod shape_delete_account_setting;
-
-pub(crate) mod shape_delete_attributes;
-
-pub(crate) mod shape_delete_capacity_provider;
-
-pub(crate) mod shape_delete_cluster;
-
-pub(crate) mod shape_delete_service;
-
-pub(crate) mod shape_delete_task_definitions;
-
-pub(crate) mod shape_delete_task_set;
-
-pub(crate) mod shape_deregister_container_instance;
-
-pub(crate) mod shape_deregister_task_definition;
-
-pub(crate) mod shape_describe_capacity_providers;
-
-pub(crate) mod shape_describe_clusters;
-
-pub(crate) mod shape_describe_container_instances;
-
-pub(crate) mod shape_describe_services;
-
-pub(crate) mod shape_describe_task_definition;
-
-pub(crate) mod shape_describe_task_sets;
-
-pub(crate) mod shape_describe_tasks;
-
-pub(crate) mod shape_discover_poll_endpoint;
-
-pub(crate) mod shape_execute_command;
-
-pub(crate) mod shape_get_task_protection;
-
-pub(crate) mod shape_list_account_settings;
-
-pub(crate) mod shape_list_attributes;
-
-pub(crate) mod shape_list_clusters;
-
-pub(crate) mod shape_list_container_instances;
-
-pub(crate) mod shape_list_services;
-
-pub(crate) mod shape_list_services_by_namespace;
-
-pub(crate) mod shape_list_tags_for_resource;
-
-pub(crate) mod shape_list_task_definition_families;
-
-pub(crate) mod shape_list_task_definitions;
-
-pub(crate) mod shape_list_tasks;
-
-pub(crate) mod shape_put_account_setting;
-
-pub(crate) mod shape_put_account_setting_default;
-
-pub(crate) mod shape_put_attributes;
-
-pub(crate) mod shape_put_cluster_capacity_providers;
-
-pub(crate) mod shape_register_container_instance;
-
-pub(crate) mod shape_register_task_definition;
-
-pub(crate) mod shape_run_task;
-
-pub(crate) mod shape_start_task;
-
-pub(crate) mod shape_stop_task;
-
-pub(crate) mod shape_submit_attachment_state_changes;
-
-pub(crate) mod shape_submit_container_state_change;
-
-pub(crate) mod shape_submit_task_state_change;
-
-pub(crate) mod shape_tag_resource;
-
-pub(crate) mod shape_untag_resource;
-
-pub(crate) mod shape_update_capacity_provider;
-
-pub(crate) mod shape_update_cluster;
-
-pub(crate) mod shape_update_cluster_settings;
-
-pub(crate) mod shape_update_container_agent;
-
-pub(crate) mod shape_update_container_instances_state;
-
 pub(crate) mod shape_update_service;
-
-pub(crate) mod shape_update_service_primary_task_set;
-
-pub(crate) mod shape_update_task_protection;
-
-pub(crate) mod shape_update_task_set;
 
 pub(crate) fn or_empty_doc(data: &[u8]) -> &[u8] {
     if data.is_empty() {
@@ -161,75 +60,13 @@ pub(crate) mod shape_cluster_not_found_exception;
 
 pub(crate) mod shape_conflict_exception;
 
-pub(crate) mod shape_create_capacity_provider_input;
-
-pub(crate) mod shape_create_cluster_input;
-
-pub(crate) mod shape_create_service_input;
-
-pub(crate) mod shape_create_task_set_input;
-
-pub(crate) mod shape_delete_account_setting_input;
-
-pub(crate) mod shape_delete_attributes_input;
-
-pub(crate) mod shape_delete_capacity_provider_input;
-
-pub(crate) mod shape_delete_cluster_input;
-
-pub(crate) mod shape_delete_service_input;
-
-pub(crate) mod shape_delete_task_definitions_input;
-
-pub(crate) mod shape_delete_task_set_input;
-
-pub(crate) mod shape_deregister_container_instance_input;
-
-pub(crate) mod shape_deregister_task_definition_input;
-
-pub(crate) mod shape_describe_capacity_providers_input;
-
-pub(crate) mod shape_describe_clusters_input;
-
-pub(crate) mod shape_describe_container_instances_input;
-
-pub(crate) mod shape_describe_services_input;
+pub(crate) mod shape_describe_task_definition;
 
 pub(crate) mod shape_describe_task_definition_input;
-
-pub(crate) mod shape_describe_task_sets_input;
-
-pub(crate) mod shape_describe_tasks_input;
-
-pub(crate) mod shape_discover_poll_endpoint_input;
-
-pub(crate) mod shape_execute_command_input;
-
-pub(crate) mod shape_get_task_protection_input;
 
 pub(crate) mod shape_invalid_parameter_exception;
 
 pub(crate) mod shape_limit_exceeded_exception;
-
-pub(crate) mod shape_list_account_settings_input;
-
-pub(crate) mod shape_list_attributes_input;
-
-pub(crate) mod shape_list_clusters_input;
-
-pub(crate) mod shape_list_container_instances_input;
-
-pub(crate) mod shape_list_services_by_namespace_input;
-
-pub(crate) mod shape_list_services_input;
-
-pub(crate) mod shape_list_tags_for_resource_input;
-
-pub(crate) mod shape_list_task_definition_families_input;
-
-pub(crate) mod shape_list_task_definitions_input;
-
-pub(crate) mod shape_list_tasks_input;
 
 pub(crate) mod shape_missing_version_exception;
 
@@ -241,41 +78,15 @@ pub(crate) mod shape_platform_task_definition_incompatibility_exception;
 
 pub(crate) mod shape_platform_unknown_exception;
 
-pub(crate) mod shape_put_account_setting_default_input;
-
-pub(crate) mod shape_put_account_setting_input;
-
-pub(crate) mod shape_put_attributes_input;
-
-pub(crate) mod shape_put_cluster_capacity_providers_input;
-
-pub(crate) mod shape_register_container_instance_input;
-
-pub(crate) mod shape_register_task_definition_input;
-
 pub(crate) mod shape_resource_in_use_exception;
 
 pub(crate) mod shape_resource_not_found_exception;
-
-pub(crate) mod shape_run_task_input;
 
 pub(crate) mod shape_server_exception;
 
 pub(crate) mod shape_service_not_active_exception;
 
 pub(crate) mod shape_service_not_found_exception;
-
-pub(crate) mod shape_start_task_input;
-
-pub(crate) mod shape_stop_task_input;
-
-pub(crate) mod shape_submit_attachment_state_changes_input;
-
-pub(crate) mod shape_submit_container_state_change_input;
-
-pub(crate) mod shape_submit_task_state_change_input;
-
-pub(crate) mod shape_tag_resource_input;
 
 pub(crate) mod shape_target_not_connected_exception;
 
@@ -285,27 +96,9 @@ pub(crate) mod shape_task_set_not_found_exception;
 
 pub(crate) mod shape_unsupported_feature_exception;
 
-pub(crate) mod shape_untag_resource_input;
-
-pub(crate) mod shape_update_capacity_provider_input;
-
-pub(crate) mod shape_update_cluster_input;
-
-pub(crate) mod shape_update_cluster_settings_input;
-
-pub(crate) mod shape_update_container_agent_input;
-
-pub(crate) mod shape_update_container_instances_state_input;
-
 pub(crate) mod shape_update_in_progress_exception;
 
 pub(crate) mod shape_update_service_input;
-
-pub(crate) mod shape_update_service_primary_task_set_input;
-
-pub(crate) mod shape_update_task_protection_input;
-
-pub(crate) mod shape_update_task_set_input;
 
 pub(crate) mod shape_attachment_state_change;
 
@@ -606,3 +399,11 @@ pub(crate) mod shape_tmpfs_list;
 pub(crate) mod shape_device_cgroup_permissions;
 
 pub(crate) mod shape_service_connect_client_alias_list;
+
+pub(crate) mod shape_describe_container_instances;
+
+pub(crate) mod shape_describe_container_instances_input;
+
+pub(crate) mod shape_describe_tasks;
+
+pub(crate) mod shape_describe_tasks_input;
