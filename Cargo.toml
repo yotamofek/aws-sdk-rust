@@ -1,0 +1,17 @@
+[workspace]
+exclude = [
+    "examples/lambda",
+    "examples/examples",
+    "examples/test-utils",
+    "examples/cross_service",
+    "examples/webassembly",
+    "tests/no-default-features",
+    "tests/webassembly"
+]
+members = [
+    "sdk/ec2",
+    "sdk/ecs",
+    "sdk/sqs",
+    "sdk/lambda",
+    "sdk/s3",
+]
