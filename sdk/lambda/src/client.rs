@@ -110,7 +110,9 @@ impl Client {
         &self.handle.conf
     }
 
-    fn validate_config(handle: &Handle) -> Result<(), ::aws_smithy_runtime_api::box_error::BoxError> {
+    fn validate_config(
+        handle: &Handle,
+    ) -> Result<(), ::aws_smithy_runtime_api::box_error::BoxError> {
         let mut cfg = ::aws_smithy_types::config_bag::ConfigBag::base();
         handle
             .runtime_plugins
@@ -135,20 +137,6 @@ impl Client {
         Self::from_conf(sdk_config.into())
     }
 }
-
-mod add_layer_version_permission;
-
-mod add_permission;
-
-mod create_alias;
-
-mod create_code_signing_config;
-
-mod create_event_source_mapping;
-
-mod create_function;
-
-mod create_function_url_config;
 
 /// Operation customization and supporting types.
 ///
@@ -177,118 +165,4 @@ mod create_function_url_config;
 /// ```
 pub mod customize;
 
-mod delete_alias;
-
-mod delete_code_signing_config;
-
-mod delete_event_source_mapping;
-
-mod delete_function;
-
-mod delete_function_code_signing_config;
-
-mod delete_function_concurrency;
-
-mod delete_function_event_invoke_config;
-
-mod delete_function_url_config;
-
-mod delete_layer_version;
-
-mod delete_provisioned_concurrency_config;
-
-mod get_account_settings;
-
-mod get_alias;
-
-mod get_code_signing_config;
-
-mod get_event_source_mapping;
-
-mod get_function;
-
-mod get_function_code_signing_config;
-
-mod get_function_concurrency;
-
-mod get_function_configuration;
-
-mod get_function_event_invoke_config;
-
-mod get_function_url_config;
-
-mod get_layer_version;
-
-mod get_layer_version_by_arn;
-
-mod get_layer_version_policy;
-
-mod get_policy;
-
-mod get_provisioned_concurrency_config;
-
-mod get_runtime_management_config;
-
 mod invoke;
-
-mod invoke_async;
-
-mod list_aliases;
-
-mod list_code_signing_configs;
-
-mod list_event_source_mappings;
-
-mod list_function_event_invoke_configs;
-
-mod list_function_url_configs;
-
-mod list_functions;
-
-mod list_functions_by_code_signing_config;
-
-mod list_layer_versions;
-
-mod list_layers;
-
-mod list_provisioned_concurrency_configs;
-
-mod list_tags;
-
-mod list_versions_by_function;
-
-mod publish_layer_version;
-
-mod publish_version;
-
-mod put_function_code_signing_config;
-
-mod put_function_concurrency;
-
-mod put_function_event_invoke_config;
-
-mod put_provisioned_concurrency_config;
-
-mod put_runtime_management_config;
-
-mod remove_layer_version_permission;
-
-mod remove_permission;
-
-mod tag_resource;
-
-mod untag_resource;
-
-mod update_alias;
-
-mod update_code_signing_config;
-
-mod update_event_source_mapping;
-
-mod update_function_code;
-
-mod update_function_configuration;
-
-mod update_function_event_invoke_config;
-
-mod update_function_url_config;
